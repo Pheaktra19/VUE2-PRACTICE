@@ -3,41 +3,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Looping with v-for</title>
+  <title>Simple Punchbag Game</title>
   <link href="./css/style.css" rel="stylesheet"/>
-  <script src=" https://unpkg.com/vue@2.6.14"></script>
+  <script src="https://unpkg.com/vue@2.6.14"></script>
 </head>
 <body>
   <div id="vue-app">
-      <h1>Looping through list</h1>
-      <!-- {{ characters[0]}}
-      <br>
-      {{ characters[1]}}
-      <br>
-      {{ characters[2]}}
-      <br>
-      {{ characters[3]}} -->
-      <h2 id="admin">List Name of Employees</h2>
-      <ul>
-        <li v-for="character in characters">{{ character }}</li>
-      </ul>
-      <h2 id="admin">List Name of Admins</h2>
-      <!-- <ul v-for="admin in admins">{{ admin.name}} : {{ admin.age}}</ul> -->
-      <ul>
-        <li v-for="(admin, index) in admins">{{ index }}. {{ admin.name}} : {{ admin.age }}</li>
-      </ul>
-      <template v-for="(admin, index) in admins">
-        <h4>{{index}}. {{ admin.name }}</h4>
-        <p>age : {{admin.age}}</p>
-      </template>
-      <h4>The other way!!</h4>
-      <template v-for="admin in admins">
-        <div v-for="(val,key) in admin">
-          <p>{{ key }} : {{ val }}</p>
-        </div>
-      </template>
-  </div>
+    <!-- bag image -->
+    <div id="bag" v-bind:class="{ burst: ended}"></div>
 
+    <!-- bag health -->
+    <div id="bag-health">
+      <div v-bind:style="{width: health + '%'}"></div>
+      <!-- When we click Punch the red color will be decrease -->
+    </div>
+
+    <!-- game controls -->
+    <center>
+    <div id="controls">
+      <button v-on:click="punch" v-show="!ended">Punch</button>
+      <button v-on:click="restart">Restart</button>
+    </div>
+  </center>
+  </div>
+  
 
   <script src="app.js"></script>
 </body>
